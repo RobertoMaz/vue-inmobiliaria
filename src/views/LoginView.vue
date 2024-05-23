@@ -7,13 +7,10 @@
     const {handleSubmit} = useForm({ validationSchema: loginSchema })
     const email = useField('email')
     const password = useField('password')
+    const auth = useAuthStore()
     const submit = handleSubmit((values) => {
-        console.log(values)
-        signInWithEmailAndPassword(auth, values.email, values.password)
-            .then((credenciales) => {
-                console.log(credenciales)
-            })
-            .catch(error => console.log(error.code))
+        auth.login(values)
+        
     })
 
 
@@ -32,6 +29,13 @@
         <v-card-subtitle class="text-h6">
             Iniciar sesión con tu cuenta
         </v-card-subtitle>
+        <v-alert
+            v-if="auth.hasError"
+            class="my-5"
+            type="error"
+            :title="auth.errorMensaje"
+        >
+        </v-alert>
         <v-form
             class="mt-5"
         >
