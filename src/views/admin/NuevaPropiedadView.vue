@@ -5,6 +5,17 @@
     import { useFirestore } from 'vuefire'
     import { useRouter } from 'vue-router'
     import useImage from '@/composables/useImage'
+    import 'leaflet/dist/leaflet.css'
+    import { LMap, LTileLayer, LMarker } from '@vue-leaflet/vue-leaflet'
+    import useLocationMap from '@/composables/useLocationMap'
+
+    
+    const items = [1, 2, 3, 4, 5]
+    
+    const { uploadImage, image, url } = useImage()
+    const router = useRouter()
+    const db = useFirestore()
+    const {zoom, center, pin} = useLocationMap()
 
     const { handleSubmit } = useForm({
         validationSchema: {
@@ -12,12 +23,8 @@
             ...imageSchema
         }
     })
-    
-    const items = [1, 2, 3, 4, 5]
-    
-    const { uploadImage } = useImage()
-    const router = useRouter()
-    const db = useFirestore()
+
+
    
 
     const titulo = useField('titulo')
@@ -34,7 +41,9 @@
         const { imagen, ... propiedad} = values
 
         const docRef = await addDoc(collection(db, "propiedades"), {
-            ...propiedad
+            ...propiedad,
+            imagen: url.value,
+            ubicacion: center.value
 
         })
         if(docRef.id){
@@ -72,8 +81,11 @@
                 v-model="imagen.value.value"
                 :error-messages="imagen.errorMessage.value"
                 @change="uploadImage"
-               
             />
+            <div v-if="image" class="my-5">
+                <p class="font-weight-bold">Imagen Propiedad: </p>
+                <img class="w-50" :src="image">
+            </div>
             <v-text-field 
                 class="mb-5"
                 label="Precio"
@@ -120,6 +132,25 @@
                 v-model="pileta.value.value"
                 :error-messages="pileta.errorMessage.value"    
             />
+            <h2 class="font-weight-bold text-center my-5">Ubicación</h2>
+            <div class="pb-10">
+                <div style="height:500px;">
+                    <LMap 
+                        v-model:zoom="zoom" 
+                        :center="center"
+                        :use-global-leaflet="false"    
+                    >
+                        <LMarker 
+                            :lat-lng="center" 
+                            draggable
+                            @moveend="pin"    
+                        />
+                        <LTileLayer
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        ></LTileLayer>
+                    </LMap>
+                </div>
+            </div>
             <v-btn 
                 color="indigo" 
                 block
