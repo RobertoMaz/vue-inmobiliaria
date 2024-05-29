@@ -85,7 +85,6 @@
                 label="Titulo"
                 class="mb-5"
             ></v-text-field>
-
             <v-file-input
                 v-model="imagen.value.value"
                 :error-messages="imagen.errorMessage.value"
@@ -95,7 +94,6 @@
                 class="mb-5"
                 @change="uploadImage"
             ></v-file-input>
-
             <div class="my-5">
                 <p class="font-weight-bold">Imagen Actual:</p>
                 <img
@@ -109,15 +107,12 @@
                     :src="propiedad?.imagen"
                 >
             </div>
-
-
             <v-text-field
                 v-model="precio.value.value"
                 :error-messages="precio.errorMessage.value"
                 label="Precio"
                 class="mb-5"
             ></v-text-field>
-
             <v-row>
                 <v-col
                     cols="12"
@@ -131,7 +126,6 @@
                         :error-messages="habitaciones.errorMessage.value"
                     />
                 </v-col>
-
                 <v-col
                     cols="12"
                     md="4"
@@ -144,7 +138,6 @@
                         :error-messages="wc.errorMessage.value"
                     />
                 </v-col>
-
                 <v-col
                     cols="12"
                     md="4"
@@ -158,20 +151,16 @@
                     />
                 </v-col>
             </v-row>
-
             <v-textarea
                 v-model="descripcion.value.value"
                 :error-messages="descripcion.errorMessage.value"
                 label="Descripción"
                 class="mb-5"
             ></v-textarea>
-
             <v-checkbox 
                 v-model="pileta.value.value"
                 label="Pileta"
             ></v-checkbox>
-
-
             <h2 class="font-weight-bold text-center my-5">Ubicación</h2>
             <div class="pb-10">
                 <div style="height:500px">
@@ -191,7 +180,6 @@
                     </LMap>
                 </div>
             </div>
-
                 <v-btn
                     color="pink-accent-3"
                     block

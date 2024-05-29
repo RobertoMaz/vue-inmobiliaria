@@ -8,7 +8,6 @@
     import useLocationMap from '@/composables/useLocationMap'
     import { watch } from 'vue'
 
-    
     const route = useRoute()
     const db = useFirestore()
     const docRef = doc(db, 'propiedades', route.params.id)
@@ -19,8 +18,8 @@
     watch(propiedad, (propiedad) => {
         center.value = propiedad.ubicacion
     })
-
 </script>
+
 <template>
     <v-card flat>
         <v-card-title class="mt-5 text-h3 text-center py-5 font-weight-bold">

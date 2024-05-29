@@ -9,7 +9,6 @@
     import { LMap, LTileLayer, LMarker } from '@vue-leaflet/vue-leaflet'
     import useLocationMap from '@/composables/useLocationMap'
 
-    
     const items = [1, 2, 3, 4, 5]
     
     const { uploadImage, image, url } = useImage()
@@ -23,9 +22,6 @@
             ...imageSchema
         }
     })
-
-
-   
 
     const titulo = useField('titulo')
     const imagen = useField('imagen')

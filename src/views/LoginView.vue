@@ -3,18 +3,16 @@
     import { loginSchema } from '@/validation/loginSchema'
     import { useAuthStore } from '@/stores/auth'
     
-
     const {handleSubmit} = useForm({ validationSchema: loginSchema })
     const email = useField('email')
     const password = useField('password')
     const auth = useAuthStore()
+
     const submit = handleSubmit((values) => {
-        auth.login(values)
-        
+        auth.login(values)    
     })
-
-
 </script>
+
 <template>
     <v-card
         flat

@@ -7,7 +7,6 @@ export default function usePropiedades(){
 
     const pileta = ref(false)
     const storage = useFirebaseStorage()
-
     const db = useFirestore()
     const propiedadesCollection = useCollection(collection(db, 'propiedades'))
 
@@ -24,9 +23,9 @@ export default function usePropiedades(){
     }
 
     const propiedadesFiltradas = computed(() => {
-            return pileta.value 
-                ? propiedadesCollection.value.filter(propiedad => propiedad.pileta)
-                : propiedadesCollection.value
+        return pileta.value 
+            ? propiedadesCollection.value.filter(propiedad => propiedad.pileta)
+            : propiedadesCollection.value
     })
 
     return {

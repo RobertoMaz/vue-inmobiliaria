@@ -21,7 +21,6 @@ export const useAuthStore = defineStore('auth', () => {
         })
     })
 
-
     function login({email, password}) {
         signInWithEmailAndPassword(auth, email, password)
             .then((credenciales) => {
@@ -56,6 +55,5 @@ export const useAuthStore = defineStore('auth', () => {
         isAuth,
         login,
         logout
-
     }
 })

@@ -13,12 +13,9 @@ export default function useImage() {
         upload
     } = useStorageFile(storageRefPath)
 
-
     function uploadImage(e) {
         const data = e.target.files[0]
-        if(data) upload(data)
-            
-        
+        if(data) upload(data)    
     }
 
     const image = computed(() => {
@@ -28,7 +25,6 @@ export default function useImage() {
     return {
         image,
         url,
-        uploadImage
-        
+        uploadImage  
     }
 }

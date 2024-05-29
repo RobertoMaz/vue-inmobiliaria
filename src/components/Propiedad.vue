@@ -7,8 +7,8 @@
             type: Function
         }
     })
-
 </script>
+
 <template>
     <v-col 
         cols="12"

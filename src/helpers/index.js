@@ -4,5 +4,3 @@ export const propertyPrice = (price) =>
         style: 'currency',
         currency: 'USD'
     })
-
-    

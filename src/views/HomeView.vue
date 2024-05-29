@@ -2,8 +2,8 @@
   import usePropiedades from '@/composables/usePropiedades'
   import Propiedad from '@/components/Propiedad.vue'
   import { propertyPrice } from '@/helpers'
-  const { pileta, propiedadesFiltradas } = usePropiedades()
 
+  const { pileta, propiedadesFiltradas } = usePropiedades()
 </script>
 
 <template>
