@@ -28,7 +28,7 @@
     const wc = useField('wc')
     const estacionamiento = useField('estacionamiento')
     const descripcion = useField('descripcion')
-    const alberca = useField('alberca')
+    const pileta = useField('pileta')
 
     const route = useRoute()
     const router = useRouter()
@@ -45,7 +45,7 @@
         wc.value.value = propiedad.wc
         estacionamiento.value.value = propiedad.estacionamiento
         descripcion.value.value = propiedad.descripcion
-        alberca.value.value = propiedad.pileta
+        pileta.value.value = propiedad.pileta
         center.value = propiedad.ubicacion
     })
 
@@ -167,7 +167,7 @@
             ></v-textarea>
 
             <v-checkbox 
-                v-model="alberca.value.value"
+                v-model="pileta.value.value"
                 label="Pileta"
             ></v-checkbox>
 
